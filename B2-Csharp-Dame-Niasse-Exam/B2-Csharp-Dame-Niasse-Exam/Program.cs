@@ -60,9 +60,21 @@ namespace B2_Csharp_Dame_Niasse_Exam
                 string message;
                 message = CreerMessage(v);
                 Console.WriteLine(message);
+                Console.WriteLine("---------------------------------");
             }
         }
 
+
+        //essai de nombre habitant total ( non reussi)
+      /*  public static void HbtTot()
+        { 
+        int NbrHbtTotal = 0;
+            
+            foreach()
+            {
+                NbrHbtTotal = NbrHbtTotal + v.NbrHbt;
+            }
+        } */
 
         //fonction create Ville
         public static Ville CreateVille()
@@ -95,7 +107,7 @@ namespace B2_Csharp_Dame_Niasse_Exam
         {
             string result;
 
-            result = "Nom :" + v.Nom + "," + "Code postale :" + v.CodePostale + "," + "\n" + "Nombre d'habitants" + v.NbrHbt;
+            result = "Nom : " + v.Nom + " ," + "Code postale : " + v.CodePostale + " ," + "\n" + "Nombre d'habitants : " + v.NbrHbt;
 
 
            return result;
