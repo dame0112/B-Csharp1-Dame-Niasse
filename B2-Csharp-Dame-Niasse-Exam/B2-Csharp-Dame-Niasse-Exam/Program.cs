@@ -29,7 +29,7 @@ namespace B2_Csharp_Dame_Niasse_Exam
                 }
                 else if (choixUtilisateur == "3")
                 {
-                   
+                    Affichee(listeVille);
                 }
                 else
                 {
@@ -66,18 +66,23 @@ namespace B2_Csharp_Dame_Niasse_Exam
 
 
         //essai de nombre habitant total ( non reussi)
-      /*  public static void HbtTot()
-        { 
-        int NbrHbtTotal = 0;
-            
-            foreach()
-            {
-                NbrHbtTotal = NbrHbtTotal + v.NbrHbt;
-            }
-        } */
+        public static void Affichee(List<Ville> listeville)
+        {
+            int NbrHbtTotal = 0;
 
-        //fonction create Ville
-        public static Ville CreateVille()
+            foreach (Ville v in listeville)
+            {
+
+                NbrHbtTotal = NbrHbtTotal + v.NbrHbt;
+
+
+                Console.WriteLine("l'ensemble des habitants est : " + NbrHbtTotal);
+
+            }
+        }
+
+            //fonction create Ville
+            public static Ville CreateVille()
         {
             // initialisation de la ville et ajout à la liste
             Ville v = new Ville();
