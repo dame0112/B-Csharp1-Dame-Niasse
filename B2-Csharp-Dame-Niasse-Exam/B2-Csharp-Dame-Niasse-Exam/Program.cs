@@ -6,7 +6,7 @@ namespace B2_Csharp_Dame_Niasse_Exam
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello world!");
         }
     }
 }
