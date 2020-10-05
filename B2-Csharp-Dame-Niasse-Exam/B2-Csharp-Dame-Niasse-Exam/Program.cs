@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace B2_Csharp_Dame_Niasse_Exam
 {
@@ -7,6 +8,137 @@ namespace B2_Csharp_Dame_Niasse_Exam
         static void Main(string[] args)
         {
             Console.WriteLine("Hello world!");
+
+            // déclaration de la liste de ville
+            List<Ville> listeVille = new List<Ville>();
+
+
+            //boucle while ref menu utilisateur 
+            while (true)
+            {
+                string choixUtilisateur = MenuUtilisateur();
+
+                if (choixUtilisateur == "1")
+                {
+                    Ville v = CreateVille();
+                    listeVille.Add(v);
+                }
+                else if (choixUtilisateur == "2")
+                {
+                    Affiche(listeVille);
+                }
+                else
+                {
+                    break;
+
+                }
+            }
+            Console.ReadKey();
+        }
+        // menu utilisateur
+        private static string MenuUtilisateur()
+        {
+            Console.WriteLine("Bienvenue dans l'appli de gestion des villes");
+            Console.WriteLine("Que voulez-vous faire ?");
+            Console.WriteLine("1. creer une nouvelle ville");
+            Console.WriteLine("2. Afficher l'ensemble des villes");           
+            string choixUtilisateur = Console.ReadLine();
+            return choixUtilisateur;
+        }
+
+        //liste ville
+        public static void Affiche(List<Ville> Ville)
+        {
+            // pour chaque ville, on affiche un message
+            foreach (Ville v in Ville)
+            {
+                string message;
+                message = CreerMessage(v);
+                Console.WriteLine(message);
+            }
+        }
+
+        //fonction create Ville
+        public static Ville CreateVille()
+        {
+            // initialisation de la ville et ajout à la liste
+            Ville v = new Ville();
+
+            // demande du nom de la ville 
+            v.Nom = DemanderNom("Nom :");
+
+            // demande de code postale
+            v.CodePostale = DemandeEntier("Code Postale :");
+
+            //demande nombre habitant 
+            v.NbrHbt = DemanderEntiers("nombre d'habitant :");
+
+
+            // construction du message
+            string message;
+            message = CreerMessage(v);
+
+
+            // affichage du message
+            Console.WriteLine(message);
+            return v;
+        }
+
+        //fonction creer message
+        public static string CreerMessage(Ville v)
+        {
+            string result;
+
+            result = "Nom :" + v.Nom + "," + "Code postale :" + v.CodePostale + "," + "\n" + "Nombre d'habitants" + v.NbrHbt;
+
+
+           return result;
+        }
+
+        //fonction verif si code postale et nbr habitant sont des entier
+        public static int DemandeEntier(string message)
+        {
+            Console.WriteLine(message);
+            string CodePostale;
+           
+            CodePostale = Console.ReadLine();
+          
+            int intValue;
+            while (!int.TryParse(CodePostale, out intValue))
+            {
+                Console.WriteLine("la saisie est invalide");
+                CodePostale = Console.ReadLine();
+            }
+          
+            return intValue;
+        }
+
+        public static int DemanderEntiers(string message)
+        {
+            Console.WriteLine(message);
+            string NbrHbt;
+            NbrHbt = Console.ReadLine();
+            int intValue;
+
+            while (!int.TryParse(NbrHbt, out intValue))
+            {
+                Console.WriteLine("la saisie est invalide");
+                NbrHbt = Console.ReadLine();
+            }
+            return intValue;
+
+        }
+
+
+        //Fonction ajoutée pour demander le nom de la ville
+        public static string DemanderNom (string message)
+        {
+            Console.WriteLine(message);
+            string Nom;
+         // string nom = Nom.ToUpper([0]);
+            Nom = Console.ReadLine();
+
+            return Nom;
         }
     }
 }
