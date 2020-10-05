@@ -27,6 +27,10 @@ namespace B2_Csharp_Dame_Niasse_Exam
                 {
                     Affiche(listeVille);
                 }
+                else if (choixUtilisateur == "3")
+                {
+                   
+                }
                 else
                 {
                     break;
@@ -41,7 +45,8 @@ namespace B2_Csharp_Dame_Niasse_Exam
             Console.WriteLine("Bienvenue dans l'appli de gestion des villes");
             Console.WriteLine("Que voulez-vous faire ?");
             Console.WriteLine("1. creer une nouvelle ville");
-            Console.WriteLine("2. Afficher l'ensemble des villes");           
+            Console.WriteLine("2. Afficher l'ensemble des villes");
+            Console.WriteLine("3.Afficher le nombre total d'habitants");
             string choixUtilisateur = Console.ReadLine();
             return choixUtilisateur;
         }
@@ -57,6 +62,7 @@ namespace B2_Csharp_Dame_Niasse_Exam
                 Console.WriteLine(message);
             }
         }
+
 
         //fonction create Ville
         public static Ville CreateVille()
@@ -95,7 +101,7 @@ namespace B2_Csharp_Dame_Niasse_Exam
            return result;
         }
 
-        //fonction verif si code postale et nbr habitant sont des entier
+        //fonctions verif si code postale et nbr habitant sont des entier
         public static int DemandeEntier(string message)
         {
             Console.WriteLine(message);
@@ -104,7 +110,7 @@ namespace B2_Csharp_Dame_Niasse_Exam
             CodePostale = Console.ReadLine();
           
             int intValue;
-            while (!int.TryParse(CodePostale, out intValue))
+            while (!int.TryParse(CodePostale, out intValue) || intValue < 0)
             {
                 Console.WriteLine("la saisie est invalide");
                 CodePostale = Console.ReadLine();
@@ -119,8 +125,9 @@ namespace B2_Csharp_Dame_Niasse_Exam
             string NbrHbt;
             NbrHbt = Console.ReadLine();
             int intValue;
+            
 
-            while (!int.TryParse(NbrHbt, out intValue))
+            while (!int.TryParse(NbrHbt, out intValue) || intValue < 0)
             {
                 Console.WriteLine("la saisie est invalide");
                 NbrHbt = Console.ReadLine();
@@ -135,10 +142,16 @@ namespace B2_Csharp_Dame_Niasse_Exam
         {
             Console.WriteLine(message);
             string Nom;
-         // string nom = Nom.ToUpper([0]);
-            Nom = Console.ReadLine();
+            Nom = "";
+            while (string.IsNullOrEmpty(Nom))
+            {
+                Console.WriteLine("la case Nom est vide veuillez bien saisir le nom de la ville");
+                Nom = Console.ReadLine();
+            }
 
             return Nom;
         }
+
+        }
     }
-}
+
